@@ -10,12 +10,20 @@ let currentMoles = []
 const pokemons = [
     { name: 'diglett', score: 10 },
     { name: 'diglett', score: 10 },
+    { name: 'diglett', score: 10 },
+    { name: 'diglett', score: 10 },
+    { name: 'diglett', score: 10 },
     { name: 'pikachu', score: -10 },
+    { name: 'pikachu', score: -10 },
+    { name: 'pikachu', score: -10 },
+    { name: 'lycanroc', score: -30 },
 ]
 let score = 0
 let gameState = 'end'
 let gameRoundTimer = null
-let currentTime = 30
+const playtime = 30
+
+let currentTime = playtime
 const sound = new Audio("assets/smash.mp3")
 
 btnEl.addEventListener('click', () => {
@@ -30,7 +38,6 @@ btnEl.addEventListener('click', () => {
                 clearInterval(interval)
                 gameState = 'end'
                 btnEl.textContent = '开始游戏'
-                modelEl.style.display = 'block'
                 end()
             }
             document.querySelector('.time span').textContent = currentTime
@@ -45,6 +52,7 @@ function run() {
     if (gameState === 'end') {
         return
     }
+    btnEl.style.display = 'none'
     const i = Math.floor(Math.random() * holes.length)
     // 如果currentMoles的长度大于6，就等一秒再执行
     if (currentMoles.length > 6) {
@@ -116,6 +124,11 @@ function run() {
 }
 function end() {
     updateScore()
+    modelEl.style.display = 'block'
+    setTimeout(() => {
+        btnEl.textContent = '重新开始'
+        btnEl.style.display = 'block'
+    }, 3000)
 }
 function reset() {
     score = 0
@@ -131,8 +144,6 @@ function reset() {
     run()
 }
 const removeMoles = (hole, img, i) => {
-    console.log('removeMoles')
-    console.log(hole, img, i)
     if (hole) {
         hole.removeChild(img)
         currentMoles = currentMoles.filter(n => n !== i)

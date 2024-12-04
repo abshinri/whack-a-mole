@@ -51,6 +51,7 @@ body {
     font-size: 1.5em;
     padding-top: 2%;
 }
+
 .modal .button {
     position: relative;
     color: #fff;
@@ -115,6 +116,7 @@ body {
     font-size: 1em;
     color: #fff;
 }
+
 .time,
 .score {
     text-align: center;
@@ -124,11 +126,13 @@ body {
     font-size: 1.5em;
     margin-bottom: .5em;
 }
+
 .time {
     left: unset;
     right: 3%;
     font-size: 1.5em;
 }
+
 .time,
 .score,
 .pmo,
